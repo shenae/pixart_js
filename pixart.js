@@ -7,13 +7,24 @@ let colorField = document.getElementById("color-field");
 let button = document.getElementById('set-color');
 let brush = document.querySelector('.brush');
 
-function changeColor(){
+function changeColor(event){
 brush.style.backgroundColor = colorField.value;
+event.preventDefault();
 }
+//change color by clicking submit or enter
+button.addEventListener('click', changeColor); 
 
-button.addEventListener('click', (changeColor)); 
-
-
+//create field for art
+for(let i=0; i <= 8000; i++) {
+	let div = document.createElement('div');
+	document.querySelector('body').appendChild(div);
+	div.classList.add('square');
+	div.addEventListener('mouseover', changeSquares);
+}
+//pick up mouse event after color change to draw
+function changeSquares(event){
+	event.target.style.background = colorField.value;
+}
 
 
 //all of the colors
